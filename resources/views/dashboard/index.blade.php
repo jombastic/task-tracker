@@ -49,7 +49,7 @@
                 {{ optional($task->category)->name }}
                 </p>
                 </div>
-
+                
                 <span
                 class="text-xs sm:text-sm px-2 py-1 rounded w-max
                 {{ $task->is_completed ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-700' }}">
