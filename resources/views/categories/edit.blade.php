@@ -8,14 +8,17 @@
         </div>
 
         <div class="rounded bg-white p-4 shadow sm:p-6">
-            <form method="POST" action="{{ route('categories.update', $category) }}">
-                @method('PUT')
+            <form
+                method="POST"
+                action="{{ route("categories.update", $category) }}"
+            >
+                @method("PUT")
 
-                @include('categories._form')
+                @include("categories._form")
 
                 <div class="mt-6 flex flex-col justify-end gap-3 sm:flex-row">
                     <a
-                        href="{{ route('categories.index') }}"
+                        href="{{ route("categories.index") }}"
                         class="w-full px-4 py-2 text-center text-sm text-gray-700 hover:underline sm:w-auto"
                     >
                         Cancel
