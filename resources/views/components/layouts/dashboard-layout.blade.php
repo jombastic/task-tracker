@@ -67,11 +67,12 @@
                         Dashboard
                     </a>
 
-                    {{--
-                        <a href="{{ route('tasks.index') }}" class="block px-3 py-2 rounded hover:bg-gray-100">
+                    <a
+                        href="{{ route("tasks.index") }}"
+                        class="block rounded px-3 py-2 hover:bg-gray-100"
+                    >
                         Tasks
-                        </a>
-                    --}}
+                    </a>
 
                     <a
                         href="{{ route("categories.index") }}"

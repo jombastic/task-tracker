@@ -10,15 +10,22 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $tasks = $request->user()
+            ->tasks()
+            ->with('category')
+            ->orderBy('completed_at')
+            ->orderBy('due_date')
+            ->get();
+
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -27,14 +34,6 @@ class TaskController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Task $task)
     {
         //
     }
