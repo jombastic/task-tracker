@@ -24,7 +24,6 @@ class TaskPolicy
 
     public function update(User $user, Task $task): bool
     {
-        dd('kaka');
         return $task->user_id === $user->id;
     }
 

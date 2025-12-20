@@ -15,9 +15,9 @@ Route::middleware(['auth'])->group(function () {
         ->middlewareFor('index', 'can:viewAny,App\Models\Task')
         ->middlewareFor('create', 'can:create,App\Models\Task')
         ->middlewareFor('store', 'can:create,App\Models\Task')
-        ->middlewareFor('edit', 'can:update,Task')
-        ->middlewareFor('update', 'can:update,Task')
-        ->middlewareFor('destroy', 'can:delete,Task')
+        ->middlewareFor('edit', 'can:update,task')
+        ->middlewareFor('update', 'can:update,task')
+        ->middlewareFor('destroy', 'can:delete,task')
         ->except('show');
 
     Route::patch(
