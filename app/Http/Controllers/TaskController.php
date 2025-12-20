@@ -27,7 +27,12 @@ class TaskController extends Controller
      */
     public function create(Request $request)
     {
-        //
+        $categories = $request->user()
+            ->categories()
+            ->orderBy('name')
+            ->get();
+
+        return view('tasks.create', compact('categories'));
     }
 
     /**
