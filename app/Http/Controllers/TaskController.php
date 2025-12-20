@@ -85,4 +85,15 @@ class TaskController extends Controller
             ->route('tasks.index')
             ->with('success', 'Task deleted successfully.');
     }
+
+    public function toggleComplete(Task $task)
+    {
+        $task->update([
+            'completed_at' => $task->completed_at
+                ? null
+                : now()
+        ]);
+
+        return back();
+    }
 }

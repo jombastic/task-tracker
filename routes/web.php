@@ -23,7 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::patch(
         'tasks/{task}/toggle-complete',
         [Controllers\TaskController::class, 'toggleComplete']
-    )->name('tasks.toggle-complete');
+    )->can('update', 'task')
+    ->name('tasks.toggle-complete');
 
     Route::resource('categories', Controllers\CategoryController::class)
         ->middlewareFor('index', 'can:viewAny,App\Models\Category')
