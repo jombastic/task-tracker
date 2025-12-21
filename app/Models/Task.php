@@ -27,6 +27,7 @@ class Task extends Model
     protected $casts = [
         'due_date' => 'date',
         'completed_at' => 'datetime',
+        'last_generated_at' => 'date',
         'is_recurring' => 'boolean',
     ];
 

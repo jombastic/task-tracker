@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\UpsertTask;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Models\Task;
@@ -40,9 +41,9 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTaskRequest $request)
+    public function store(StoreTaskRequest $request, UpsertTask $action)
     {
-        $request->user()->tasks()->create($request->validated());
+        $action->handle($request->validated(), $request->user());
 
         return redirect()
             ->route('tasks.index')
@@ -65,9 +66,9 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request, Task $task, UpsertTask $action)
     {
-        $task->update($request->validated());
+        $action->handle($request->validated(), $request->user(), $task);
 
         return redirect()
             ->route('tasks.index')

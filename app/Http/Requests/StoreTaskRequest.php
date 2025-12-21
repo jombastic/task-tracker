@@ -25,7 +25,19 @@ class StoreTaskRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'due_date' => ['nullable', 'date'],
-            'category_id' => ['nullable', 'exists:categories,id']
+
+            'category_id' => [
+                'nullable',
+                'exists:categories,id',
+            ],
+
+            'is_recurring' => ['sometimes', 'boolean'],
+
+            'recurrence_type' => [
+                'nullable',
+                'in:daily,weekly',
+                'required_if:is_recurring,1',
+            ],
         ];
     }
 }
